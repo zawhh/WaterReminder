@@ -1,24 +1,44 @@
-from tkinter import Frame, BOTH, Button, messagebox
+import tkinter as tk
+from tkinter import messagebox
 import time
 
 
-class Window(Frame):
+class Window(tk.Frame):
     def __init__(self, master=None):
-        Frame.__init__(self, master)
+        tk.Frame.__init__(self, master)
         self.master = master
+        self.interval_sec = 10
+        self.count_sec = self.interval_sec
         self.init_window()
 
     def init_window(self):
         self.master.title("Water Reminder")
-        self.pack(fill=BOTH, expand=1)
+        self.pack(fill=tk.BOTH, expand=1)
+        self.start_reminder()
+        self.time = tk.StringVar()
+        self.label1 = tk.Label(self, justify='center',
+                               textvariable=self.time, font='times 25 bold')
+        self.label1.pack()
 
-        drinkButton = Button(self, text="I've drink water",
-                             command=self.drinkReminderCallback)
-        drinkButton.place(x=0, y=0)
+    def start_reminder(self):
+        # self.after(self.interval_sec*1000, self.show_message)
+        self.start_per_second()
 
-    def drinkReminderCallback(self):
-        self.after(10*1000, self.showMessage)
-
-    def showMessage(self):
+    def show_message(self):
         messagebox.showinfo("Hello Ruki", "Time to drink water")
-        self.after(30*60*1000, self.showMessage)
+        # # 30 min
+        # self.after(self.interval_sec*1000, self.show_message)
+
+    def start_per_second(self):
+        self.after(1000, self.per_second)
+
+    def per_second(self):
+        self.count_sec = self.count_sec - 1
+        self.update_time()
+        self.after(1000, self.per_second)
+
+    def update_time(self):
+        self.time.set(str(self.count_sec))
+        if (self.count_sec == 0):
+            self.count_sec = self.interval_sec
+            self.show_message()

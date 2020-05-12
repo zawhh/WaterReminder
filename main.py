@@ -1,7 +1,8 @@
-from src.ui import Window
 from tkinter import Tk
+from src.ui import window
 
-root = Tk()
-root.geometry("400x300")
-app = Window.Window(root)
-root.mainloop()
+if __name__ == "__main__":
+    root = Tk()
+    root.geometry("400x300")
+    app = window.Window(root)
+    root.mainloop()

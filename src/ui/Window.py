@@ -21,13 +21,10 @@ class Window(tk.Frame):
         self.label1.pack()
 
     def start_reminder(self):
-        # self.after(self.interval_sec*1000, self.show_message)
         self.start_per_second()
 
     def show_message(self):
         messagebox.showinfo("Hello Ruki", "Time to drink water")
-        # # 30 min
-        # self.after(self.interval_sec*1000, self.show_message)
 
     def start_per_second(self):
         self.after(1000, self.per_second)

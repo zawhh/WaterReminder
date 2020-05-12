@@ -21,4 +21,4 @@ class Window(Frame):
 
     def showMessage(self):
         messagebox.showinfo("Hello Ruki", "Time to drink water")
-        self.after(10*1000, self.showMessage)
+        self.after(30*60*1000, self.showMessage)

@@ -7,7 +7,7 @@ class Window(tk.Frame):
     def __init__(self, master=None):
         tk.Frame.__init__(self, master)
         self.master = master
-        self.interval_sec = 10
+        self.interval_sec = 30*60  #30 min
         self.count_sec = self.interval_sec
         self.init_window()
 

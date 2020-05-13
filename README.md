@@ -17,4 +17,4 @@ Win: `.\env\Scripts\activate`
 `deactivate`
 
 ### Packaging EXE
-https://datatofish.com/executable-pyinstaller/
+Win: `pyinstaller -p .\ main.py`
